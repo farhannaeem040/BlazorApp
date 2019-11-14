@@ -1,0 +1,65 @@
+﻿{
+  "Server": "localhost",
+  "ServerUrl": "http://{0}/BS/businessService/",
+  "LogsFolderPath": "",
+  "LogsFlushWaitSec": 0,
+  "LogLevel": null,
+  "SimulateServer": false,
+  "SimulateATM": true,
+  "InactivityTime": 1000,
+  "InactivityWarningTime": 1000,
+  "RequestTimeOut": 40,
+  "TerminalType": "ATM",
+  "EngErrorMessage": "There was an error. Please try again later",
+  "AraErrorMessage": "حدث خلل اثناء تنفيذ العملية , الرجاء المحاولة لاحقا",
+  "EngServerTimeoutMessage": "There was an error. Please try again later",
+  "AraServerTimeoutMessage": "حدث خلل اثناء تنفيذ العملية , الرجاء المحاولة لاحقا",
+  "ClickVolume": 20,
+  "ErrorVolume": 20,
+  "HeatBeatMinutes": 15,
+  "FingerPrintServiceUrl": "http://localhost:9090/api/FP/",
+  "AdditionalVariables": {
+    "QRCodeDisplayTime": 100
+  },
+  "RunAsService": false,
+  "LocalUrl": "http://0.0.0.0:82",
+  "LabelFiles": [
+    "Labels/Common.json",
+    "Labels/SharedViews.json",
+    "Labels/sadad.json",
+    "Labels/MOI.json",
+    "Labels/CardPrinting.json",
+    "Labels/IBANInquiry.json",
+    "Labels/MobileCash.json",
+    "Labels/Cardless.json",
+    "Labels/Transfers.json",
+    "Labels/mainMenu.json",
+    "Labels/OtherServices.json"
+  ],
+  "Urls": [
+    {
+      "ServiceName": "sadad",
+      "URL": "http://localhost:82/sadad"
+    },
+    {
+      "ServiceName": "expiredcard",
+      "URL": "http://localhost:82/cardprinting/index/expiredcard"
+    },
+    {
+      "ServiceName": "cardless",
+      "URL": "http://localhost:82/cardprinting/index/cardless"
+    },
+    {
+      "ServiceName": "MobileCash",
+      "URL": "http://localhost:82/MobileCash"
+    },
+    {
+      "ServiceName": "pinSetSuccess",
+      "URL": "http://localhost:82/cardprinting/index/pinSetSuccess"
+    },
+    {
+      "ServiceName": "cardmenu",
+      "URL": "http://localhost:82/cardprinting/index/cardmenu"
+    }
+  ]
+}
