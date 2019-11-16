@@ -1,3 +1,23 @@
-﻿@layout STCPayLayout
-@page "/STCPay/ShowQRCode"
-<h3>ShowQRCode</h3>
+﻿@page "/STCPay/ShowQRCode"
+<div>
+    <div style="height:124px">
+        <div class="titleParent">
+            <div style="background-color:none; text-align:center;  color: white; display: table-cell; width: 1024px;">
+                <img src="~/images/stcpay.png" style="height:90px; margin-top:20px;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="FDK123Title23Row" style="text-align:center; display:table; width:100%;">
+        <div class="line" style="display:table-cell;vertical-align:middle; text-align:center; ">
+            <div><img style="width:510px" ng-src="{{pageCtrl.imagePath}}" /></div>
+        </div>
+    </div>
+    {{pageCtrl.qrCodeSeqNo}}
+
+
+    <div class="FDK4Row" style="text-align:center">
+        <a class="FDKButton rightFDK">Cancel</a>
+    </div>
+
+</div>

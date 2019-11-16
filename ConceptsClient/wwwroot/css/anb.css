@@ -1,17 +1,482 @@
-﻿body {
-    width: 1024px;
-    height: 766px;
+﻿.fullScreen {
+    min-width: 1024px;
+    min-height: 766px;
     margin: 0;
 }
-
 
 html, body {
     overflow-y: hidden;
     font-family: Roboto;
 }
 
+.blueInput {
+    background-color: lightblue;
+    color: white;
+}
+
 .screenBackgroud {
-    background-image: url('../images/bg.jpg');
+    background-image: url(/images/bg.jpg);
     background-repeat: no-repeat;
 }
 
+.titleArea {
+    height: 294px;
+    width: 1024px;
+}
+
+.titleArea1 {
+    height: 110px;
+    width: 1024px;
+}
+
+.titleArea12 {
+    height: 210px;
+    width: 1024px;
+}
+
+.titleParent {
+    display: table;
+}
+
+.title1Row {
+    height: 108px;
+    padding-top: 14px;
+    font-size: 28px;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    width: 1024px;
+    vertical-align: middle;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.title2Row {
+    height: 98px;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    width: 1024px;
+    vertical-align: middle;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.title3Row {
+    height: 82px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1024px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+
+.title23Row {
+    height: 182px;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    display: table-cell;
+    width: 1024px;
+    vertical-align: middle;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.singleInput {
+    width: 500px;
+    margin-top: 200px;
+    height: 80px;
+    margin: auto;
+    color: maroon;
+    background-color: white;
+    font-family: inherit;
+    font-size: 40px;
+    text-align: center;
+}
+
+.rightFDK {
+    float: right;
+    margin-top: 33px;
+}
+
+.leftFDK {
+    float: left;
+    margin-top: 33px;
+}
+
+.FDK1Row {
+    height: 118px;
+}
+
+.FDK2Row {
+    height: 118px;
+}
+
+.FDK3Row {
+    height: 118px;
+}
+
+.FDK4Row {
+    height: 118px;
+}
+
+.FDK123Row {
+    height: 354px;
+}
+
+.FDK234Row {
+    height: 354px;
+    text-align: center;
+}
+
+.FDK12Row {
+    height: 236px;
+}
+
+
+.FDK1Title3Row {
+    height: 202px;
+}
+
+.FDK12Title3Row {
+    height: 320px;
+}
+
+.FDK123Title3Row {
+    height: 438px;
+}
+
+.FDK123Title23Row {
+    height: 538px;
+}
+
+.FDK23Row {
+    height: 236px;
+}
+
+/*.FDKButton {
+    width: 244px;
+    height: 55px;
+    color: darkslateblue;
+    background-color: white;
+    font-family: roboto-thin;
+    font-size: 24px;
+    text-align: center;
+    border: 0px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}*/
+
+.FDKButton {
+    width: 244px;
+    height: 85px;
+    line-height: 85px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    background-image: url('../images/buttonbg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: central;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+    .FDKButton:active {
+        background-image: url('../images/buttonBgActive.png');
+    }
+
+.FDKSelect {
+    background-image: url('../images/FDKSelect.png');
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.FDKUp {
+    background-image: url('../images/FDKUp.png');
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.FDKDown {
+    background-image: url('../images/FDKDown.png');
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.BigWhiteText {
+    font-size: 32px;
+    text-align: center;
+    color: white;
+}
+
+.MediumWhiteText {
+    font-size: 26px;
+    text-align: center;
+    color: white;
+}
+
+.SmallWhiteText {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.single-input-field {
+    height: 80px;
+    width: 580px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 250px;
+    left: 230px;
+}
+
+.bd-table {
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 250px;
+}
+
+.bd-label {
+    width: inherit;
+    font-size: 25px;
+    color: white;
+    top: 250px;
+}
+
+.key {
+    display: inline-block;
+    width: 380px;
+}
+
+.value {
+    display: inline-block;
+    width: 380px;
+}
+
+.summaryHeader {
+    display: inline-block;
+    width: 190px;
+    font-size: 24px;
+    text-align: center;
+    color: maroon;
+}
+
+.summaryValue {
+    display: inline-block;
+    width: 190px;
+}
+
+.success {
+    color: white;
+}
+
+.failure {
+    color: white;
+}
+
+.line {
+    margin: 1px;
+}
+
+.singleInputField {
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../images/input-background-2.png');
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.singleInputFieldCP {
+    height: 70px;
+    width: 500px;
+    border-width: 0px;
+    font-size: 56px;
+    text-align: center;
+    background-color: #3da3ef;
+    border-color: #3da3ef;
+    border-width: 0.5px;
+    font-weight: normal;
+    color: #ddd;
+}
+
+    .singleInputFieldCP:focus {
+        background-color: #4db6f3;
+        font-weight: bold;
+        border-width: 0.5px;
+        border-color: green;
+        color: white;
+    }
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: darkcyan;
+}
+
+.md-button {
+    margin-top: 50px;
+}
+
+.OskBbutton {
+    background-color: white;
+}
+
+.OskBbuttons {
+    margin-left: 2px;
+}
+
+    .OskBbuttons ul {
+        width: 1020px;
+        height: 360px;
+        margin: 0 auto;
+        padding: 0px;
+        border-radius: 5px 5px 0 0;
+        /*background: #eee;*/
+        list-style: none;
+        font-size: 36px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        font-weight: normal;
+    }
+
+        .OskBbuttons ul li {
+            float: left;
+            margin: 5px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #f9f9f9;
+            -webkit-border-radius: 5px;
+            border-color: #e5e5e5;
+            cursor: none;
+            width: 72px;
+            height: 70px;
+            line-height: 65px;
+            margin: 2px;
+            color: #666666;
+        }
+
+    .OskBbuttons li.active {
+        background-color: #E6FFD8;
+        border-color: #6FDA54
+    }
+
+    .OskBbuttons ul li:hover {
+        background-color: #FFD488;
+        border-color: #FFAE6E
+    }
+
+.TouchScreenList {
+    height: 575px;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 80px;
+}
+
+.TouchScreenListItem {
+    color: white;
+    width: 276px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    height: 279px;
+    background-image: url('../images/selection.png');
+    background-repeat: no-repeat;
+    font-size: 26px;
+}
+
+    .TouchScreenListItem:active {
+        background-image: url('../images/selectionDown.png');
+    }
+
+
+.CardListItem {
+    color: white;
+    width: 276px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    min-height: 278px;
+    background-image: url('../images/cardButton.png');
+    background-repeat: no-repeat;
+    font-size: 26px;
+}
+
+    .CardListItem:active {
+        background-image: url('../images/cardButtonDown.png');
+    }
+
+.TouchCancel {
+    width: 294px;
+    height: 55px;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    background-image: url('../images/ReturnCardButn.png');
+    background-color: transparent;
+    background-size: initial;
+    background-repeat: no-repeat;
+    vertical-align: central;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 7px;
+    padding: 0;
+    border: none;
+    position: absolute;
+}
+
+    .TouchCancel:active {
+        background-color: transparent;
+        background-size: initial;
+        background-repeat: no-repeat;
+        background-image: url('../images/ReturnCardButn_Down.png');
+        position: absolute;
+        padding: 0;
+        border: none;
+    }
+
+
+.dialogueBox {
+}
+
+.up-button-cardlist {
+    position: absolute;
+    left: 950px;
+    top: 250px;
+    width: 70px;
+    height: 80px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.down-button-cardlist {
+    position: absolute;
+    left: 950px;
+    top: 400px;
+    background-color: white;
+    width: 70px;
+    height: 80px;
+    border-radius: 20px;
+}

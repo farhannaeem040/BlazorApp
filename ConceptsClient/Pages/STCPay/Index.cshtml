@@ -7,14 +7,14 @@
 <head>
     <title>STC Pay</title>
     <base href="~/STCPay" />
-   
-</head>
-<body>
     <link href="./css/anb.css" rel="stylesheet" />
-    <app>
-        @(await Html.RenderComponentAsync<AppStcPay>(RenderMode.ServerPrerendered))
-    </app>
-
+</head>
+<body style=" margin:0px" class="fullScreen screenBackgroud">
+    <div>
+        <app>
+            @(await Html.RenderComponentAsync<AppStcPay>(RenderMode.ServerPrerendered))
+        </app>
+    </div>
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
