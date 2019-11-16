@@ -1,21 +1,40 @@
-﻿@page "/STCPay/ShowQRCode"
+﻿@inherits STCPayLayout
+@using DTOs.TerminalResponses
+@using ANBBusinessServices.TerminalRequests
+@page "/STCPay/ShowQRCode"
+@code{
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        base.Start();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if(firstRender == true)
+        {
+            this.QRImageLoaded( new SingleFieldRequest<string> { Data= this.qRCodeInfoResponse.QRCodeSeqNo }  );
+        }
+
+    }
+}
+
 <div>
     <div style="height:124px">
         <div class="titleParent">
             <div style="background-color:none; text-align:center;  color: white; display: table-cell; width: 1024px;">
-                <img src="~/images/stcpay.png" style="height:90px; margin-top:20px;" />
+                <img src="./images/stcpay.png" style="height:90px; margin-top:20px;" />
             </div>
         </div>
     </div>
 
     <div class="FDK123Title23Row" style="text-align:center; display:table; width:100%;">
         <div class="line" style="display:table-cell;vertical-align:middle; text-align:center; ">
-            <div><img style="width:510px" ng-src="{{pageCtrl.imagePath}}" /></div>
+            <div><img style="width:510px" src="@qRCodeInfoResponse.QRCodeData" /></div>
         </div>
     </div>
-    {{pageCtrl.qrCodeSeqNo}}
-
-
     <div class="FDK4Row" style="text-align:center">
         <a class="FDKButton rightFDK">Cancel</a>
     </div>

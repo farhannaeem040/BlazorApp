@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using ConceptsClient.AppData;
+using ConceptsClient.Controllers.Common;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,17 @@ namespace ConceptsClient.Controllers
 
     public class ConnectionsController : LayoutComponentBase
     {
-        public ConnectionsController()
-        {
-
-        }
+       public SessionController sessionController { get; set; }
+       public void CreateNewSession()
+       {
+            sessionController = new SessionController();
+            sessionController.SetStartUpData( new SessionController.StartUpData { 
+                Lang = "eng",
+                MachineID = "123456",
+                ReuseSession = false,
+                PAN = "999999999999"
+            });
+       }
         public void onTimeoutWarning(Component TimeoutView)
         {
 

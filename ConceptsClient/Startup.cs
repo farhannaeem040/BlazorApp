@@ -15,8 +15,10 @@ namespace ConceptsClient
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public static IWebHostEnvironment hostingEnvironment;
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
+            Startup.hostingEnvironment = hostingEnvironment;
             Configuration = configuration;
         }
 
