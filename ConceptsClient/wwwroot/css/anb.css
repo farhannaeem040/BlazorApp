@@ -1,0 +1,17 @@
+﻿body {
+    width: 1024px;
+    height: 766px;
+    margin: 0;
+}
+
+
+html, body {
+    overflow-y: hidden;
+    font-family: Roboto;
+}
+
+.screenBackgroud {
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+}
+

@@ -52,7 +52,7 @@ namespace ConceptsClient
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/HealthPage/index");
+                endpoints.MapFallbackToPage("/STCPay/index");
             });
         }
     }
