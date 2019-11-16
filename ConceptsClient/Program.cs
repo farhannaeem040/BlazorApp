@@ -98,7 +98,7 @@ namespace ConceptsClient
 
         static void DebugLog(string msg)
         {
-            File.AppendAllLines("C:\\DebugLog.txt", new string[] { DateTime.Now.ToLongTimeString(), msg });
+            //File.AppendAllLines("C:\\DebugLog.txt", new string[] { DateTime.Now.ToLongTimeString(), msg });
         }
     }
 }
