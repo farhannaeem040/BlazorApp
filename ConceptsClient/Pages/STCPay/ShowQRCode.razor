@@ -1,24 +1,36 @@
-﻿@inherits STCPayLayout
-@using DTOs.TerminalResponses
+﻿@using DTOs.TerminalResponses
+@using ConceptsClient.Controllers.Transactions
 @using ANBBusinessServices.TerminalRequests
+@using ConceptsClient
+@inject STCPayFlowController stcPayFlowController
+@inject NavigationManager NavigationManager
+
 @page "/STCPay/ShowQRCode"
+@page "/STCPay/"
+
 @code{
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        base.Start();
+        stcPayFlowController.navigationManager = NavigationManager;
+        stcPayFlowController.GetQRCode();
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        if(firstRender == true)
+        if (firstRender == true)
         {
-            this.QRImageLoaded( new SingleFieldRequest<string> { Data= this.qRCodeInfoResponse.QRCodeSeqNo }  );
+            stcPayFlowController.QRImageLoaded(new SingleFieldRequest<string> { Data = stcPayFlowController.qRCodeInfoResponse.QRCodeSeqNo });
         }
 
     }
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
 }
 
 <div>
@@ -32,7 +44,7 @@
 
     <div class="FDK123Title23Row" style="text-align:center; display:table; width:100%;">
         <div class="line" style="display:table-cell;vertical-align:middle; text-align:center; ">
-            <div><img style="width:510px" src="@qRCodeInfoResponse.QRCodeData" /></div>
+            <div><img style="width:510px" src="@stcPayFlowController.qRCodeInfoResponse.QRCodeData" /></div>
         </div>
     </div>
     <div class="FDK4Row" style="text-align:center">

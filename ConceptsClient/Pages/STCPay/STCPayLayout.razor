@@ -1,4 +1,20 @@
 ﻿@using ConceptsClient.Controllers.Transactions
-@inherits STCPayController;
+@inherits Microsoft.AspNetCore.Components.LayoutComponentBase
+@inject STCPayFlowController stcPayFlowController;
+
+@code{    
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        this.StateHasChanged();
+        return base.OnAfterRenderAsync(firstRender);
+    }
+}
+
+
+@if (stcPayFlowController.ShowTimeOut)
+{
+    <Timeout></Timeout>
+}
+
 @Body
 

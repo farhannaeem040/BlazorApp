@@ -8,37 +8,26 @@ using System.Threading.Tasks;
 
 namespace ConceptsClient.Controllers
 {
-    public delegate void Component(ComponentBase ComponentView);
-
-    public class ConnectionsController : LayoutComponentBase
+    public class ConnectionsController 
     {
        public SessionController sessionController { get; set; }
+       public CJSAController cJSAController { get; set; }
+    
        public void CreateNewSession()
        {
             sessionController = new SessionController();
+            cJSAController = new CJSAController();
+
+
             sessionController.SetStartUpData( new SessionController.StartUpData { 
-                Lang = "eng",
-                MachineID = "123456",
-                ReuseSession = false,
-                PAN = "999999999999"
+                Lang = cJSAController.Lang ,
+                MachineID = cJSAController.MachineID ,
+                ReuseSession = cJSAController.ReuseSession,
+                PAN = cJSAController.PAN
             });
+
        }
-        public void onTimeoutWarning(Component TimeoutView)
-        {
 
-        }
-        public void onTimoutComplete(Component TimoutCompletetView)
-        {
 
-        }
-        public void onError(Component ErrorView)
-        {
-
-        }
-        public void onCancel(Component CancelView)
-        {
-
-        }
-        
     }
 }

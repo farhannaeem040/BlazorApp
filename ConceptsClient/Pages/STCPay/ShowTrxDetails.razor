@@ -1,5 +1,34 @@
-﻿<h3>ShowTrxDetails</h3>
+﻿@using DTOs.TerminalResponses
+@using ConceptsClient.Controllers.Transactions
+@using ANBBusinessServices.TerminalRequests
+@inject STCPayFlowController stcPayController
 
-@code {
+@page "/STCPay/ShowTrxDetails"
 
-}
+<div>
+    <div class="titleArea">
+        <div class="titleParent"> <div class="title1Row"> STC Pay</div> </div>
+        <div class="titleParent"> <div class="title2Row">Mobile Cash Dispense request found with following details</div></div>
+    </div>
+
+    <div ng-cloak class="FDK12Row MediumWhiteText" style=" margin-left:100px; margin-right:100px;  ">
+        <div class="line">
+            <span class="key">Amount</span> :
+            <span class="value"> @stcPayController.Amount </span>
+            <hr />
+        </div>
+        <div class="line">
+            <span class="key">RefNo</span> :
+            <span class="value"> @stcPayController.RefNo</span>
+            <hr />
+        </div>
+    </div>
+
+    <div class="FDK3Row">
+        <div class="titleParent"> <div class="title2Row"> Dispensing in 3 seconds </div></div>
+    </div>
+    <div class="FDK4Row">
+        <a class="FDKButton  rightFDK">Dispense</a>
+    </div>
+
+</div>

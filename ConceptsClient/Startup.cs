@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConceptsClient.Controllers.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -16,8 +17,10 @@ namespace ConceptsClient
     public class Startup
     {
         public static IWebHostEnvironment hostingEnvironment;
+
         public Startup(IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
+
             Startup.hostingEnvironment = hostingEnvironment;
             Configuration = configuration;
         }
@@ -30,6 +33,8 @@ namespace ConceptsClient
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddSingleton<STCPayFlowController>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +58,8 @@ namespace ConceptsClient
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/STCPay/index");
             });

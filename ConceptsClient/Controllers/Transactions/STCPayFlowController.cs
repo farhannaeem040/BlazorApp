@@ -1,8 +1,11 @@
 ﻿using ANBBusinessServices.TerminalRequests;
 using ANBBusinessServices.TerminalResponses;
 using ConceptsClient.AppData;
+using ConceptsClient.Pages.STCPay;
 using DTOs.TerminalResponses;
 using Lib;
+using Microsoft.AspNetCore.Blazor.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using QRCoder;
 using System;
@@ -16,31 +19,40 @@ using System.Threading;
 
 namespace ConceptsClient.Controllers.Transactions
 {
-    public class STCPayController : ConnectionsController
+    public class STCPayUrls
     {
-        public int TotalQRCodeDisplayTime { get; set; }
-        public int ElapsedDisplayTime { get; set; }
-        Timer FindTrx;
+        public static string ShowQrCodePageUrl = "/STCPay/ShowQRCode";
+        public static string ShowTrxDetailsPageUrl = "/STCPay/ShowTrxDetails";
+        public static string TimeoutPageUrl = "/TimeoutPage";
+        public static string CancelPageUrl = "/CancelPage";
+        public static string LoadingPageUrl = "/LoadingPage";
+        public static string CompletePageUrl = "/CompletePage";
+
+    }
+
+
+
+    public class STCPayFlowController
+    {
+
+        public ConnectionsController connectionsController { get; set; }
+        public STCPayLayout stcPayLayout { get; set; }
+        public bool ShowTimeOut { get; set; } = true;
         public QRCodeInfoResponse qRCodeInfoResponse { get; set; }
-
-
-
-        public QRCodeInfoResponse Start()
+        public QRCodeInfoResponse GetQRCode()
         {
             qRCodeInfoResponse = GetNextQRCodeInfo();
             return qRCodeInfoResponse;
         }
-        public void onLoaded(string QRCodeSeqNo)
-        {
 
-
-
-        }
-        public bool QRImageLoaded([FromBody]SingleFieldRequest<string> request)
+        public bool QRImageLoaded(SingleFieldRequest<string> request)
         {
             var task = LogableTask.NewTask("QRImageLoaded");
             try
             {
+
+                ShowTimeOut = false;
+            
                 task.Log(MethodBase.GetCurrentMethod(), TraceLevel.Info, "received request");
 
                 ServerHelper.GetResponse<string>("MobileCash/" + MethodBase.GetCurrentMethod().Name, request, false);
@@ -57,12 +69,20 @@ namespace ConceptsClient.Controllers.Transactions
                     }
                     else
                     {
-                        StagedTrxDetails getQRTrxDetails = this.GetQRTrxDetails(new SingleFieldRequest<string> { Data = request.Data });
+                        StagedTrxDetails getQRTrxDetails = this.GetQRTrxDetails(new SingleFieldRequest<string>
+                        { Data = request.Data });
 
                         if (getQRTrxDetails.TrxFound)
                         {
                             Console.WriteLine(getQRTrxDetails.TrxFound);
+                            this.Amount = getQRTrxDetails.Amount;
+                            this.RefNo = getQRTrxDetails.refNo;
+
+
+                            navigationManager.NavigateTo(STCPayUrls.ShowTrxDetailsPageUrl);
+
                             this.FindTrx.Dispose();
+
                         }
 
                         else
@@ -82,7 +102,6 @@ namespace ConceptsClient.Controllers.Transactions
             { task.EndTask(); }
         }
 
-
         public QRCodeInfoResponse GetNextQRCodeInfo()
         {
             ElapsedDisplayTime = 0;
@@ -91,7 +110,11 @@ namespace ConceptsClient.Controllers.Transactions
             var task = Lib.LogableTask.NewTask("GetNextQRCodeInfo");
             try
             {
-                CreateNewSession();
+                this.connectionsController = new ConnectionsController();
+                this.connectionsController.CreateNewSession();
+
+
+
                 task.Log(MethodBase.GetCurrentMethod(), TraceLevel.Info, "received request");
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
 
@@ -179,6 +202,25 @@ namespace ConceptsClient.Controllers.Transactions
             finally
             { task.EndTask(); }
         }
+
+
+
+
+
+
+
+
+
+        //Data Exchange Varibales
+        public int TotalQRCodeDisplayTime { get; set; }
+        public int ElapsedDisplayTime { get; set; }
+        public decimal Amount { get; set; }
+        public string RefNo { get; set; }
+
+        public NavigationManager navigationManager { get; set; }
+
+        Timer FindTrx;
+
 
     }
 }
